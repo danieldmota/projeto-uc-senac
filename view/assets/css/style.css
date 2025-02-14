@@ -1,0 +1,42 @@
+nav {
+    background-color: red;
+    grid-column: 2;
+    grid-row: 1;
+    /* grid-area: nav; */
+    height: 80px;
+    width: 100vw;
+}
+
+aside {
+    background-color: blue;
+    /* grid-area: sidebar; */
+    grid-column: 1;
+    grid-row: 1 / 4;
+    height: 100vh;
+    width: 200px;
+}
+
+main {
+    background-color: #0dff00;
+    grid-column: 2;
+    grid-row: 2;
+    /* grid-area: conteudo; */
+    height: 100vh;
+}
+
+footer {
+    background-color: yellow;
+    /* grid-area: footer; */
+    height: 60px;
+    bottom: 0;
+    grid-column: 2;
+    grid-row: 3;
+}
+
+
+body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 80px 1fr 60px;
+    ;
+}
