@@ -156,7 +156,17 @@ $produtos = [
 
     <?php require_once __DIR__ .'\..\components\aside.php'; ?>
     
-    <main>Conteúdo</main>
+    <main>
+        <h1>Produtos</h1>
+        <div class="cards">
+            <?php foreach($produtos as $produto) {?>
+                <div class="card">
+                    <h1><?= $produto['nome']?></h1>
+                    <p><?= $produto['descricao']?></p>
+                </div>
+            <?php } ?>
+        </div>
+    </main>
 
     <?php require_once __DIR__ .'\..\components\footer.php'; ?>
 </body>
