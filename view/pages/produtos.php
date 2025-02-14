@@ -148,8 +148,13 @@ $produtos = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/site-adm/view/assets/css/style.css">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="../assets/css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/components/card.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/components/produtos.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/components/footer.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/components/sidebar.css?v=<?php echo time(); ?>">
+
 </head>
 <body>
     <?php require_once __DIR__ .'\..\components\navbar.php'; ?>
@@ -161,8 +166,9 @@ $produtos = [
         <div class="cards">
             <?php foreach($produtos as $produto) {?>
                 <div class="card">
-                    <h1><?= $produto['nome']?></h1>
+                    <h3><?= $produto['nome']?></h3>
                     <p><?= $produto['descricao']?></p>
+                    <span>R$<?= $produto['preco']?></span>
                 </div>
             <?php } ?>
         </div>

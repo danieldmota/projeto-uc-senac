@@ -1,1 +1,3 @@
-<footer>Rodape</footer>
+<footer>
+    <p>Rodapé</p>
+</footer>

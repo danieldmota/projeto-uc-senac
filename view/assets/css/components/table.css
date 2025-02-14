@@ -1,8 +1,9 @@
 .table{
-    width: 50%;
+    width: 100%;
     border-color: var(--cor-branco);
     border-collapse: collapse;
     display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -20,10 +21,10 @@
     }
 
     tbody tr:nth-child(even){
-        background-color: var(--cor-cinza-claro);
+        background-color: rgb(255, 255, 255);
     }
 
     tbody tr:hover {
-        background-color: var(--cor-cinza);
+        background-color: rgb(227, 227, 227);
     }
 }
