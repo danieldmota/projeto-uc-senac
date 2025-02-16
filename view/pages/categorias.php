@@ -102,6 +102,8 @@ $categorias = [
     <link rel="stylesheet" href="../assets/css/components/content.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../assets/css/components/footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../assets/css/components/sidebar.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit" />
 </head>
 <body>
     <?php require_once __DIR__ . '\..\components\navbar.php'; ?>
@@ -125,17 +127,8 @@ $categorias = [
                         <td><?php echo $categoria['descricao'] ?></td>
                         <td>
                             <!-- METHODS - Get / Post -->
-                            <form action="visualizar.php" method="GET">
-                                <input type="hidden" name="id" value="<?php echo $filme['id'] ?>">
-                                <button>
-                                    <span class="material-symbols-outlined">
-                                        visibility
-                                    </span>
-                                </button>
-                            </form>
-
                             <form action="cadastro.php" method="GET">
-                                <input type="hidden" name="id" value="<?php echo $filme['id'] ?>">
+                                <input type="hidden" name="id" value="<?php echo $categoria['id'] ?>">
                                 <button>
                                     <span class="material-symbols-outlined">
                                         edit
@@ -144,7 +137,7 @@ $categorias = [
                             </form>
 
                             <form action="excluir.php" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $filme['id'] ?>">
+                                <input type="hidden" name="id" value="<?php echo $categoria['id'] ?>">
                                 <button onclick="return confirm('Tem certeza que deseja excluir o filme?')">
                                     <span class="material-symbols-outlined">
                                         delete
