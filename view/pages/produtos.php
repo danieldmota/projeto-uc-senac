@@ -184,7 +184,6 @@
                     </div>
                     <div class= "info">
                         <h3><?= $produto['nome']?></h3>
-                        <p><?= $produto['descricao']?></p>
                         <span>R$<?= $produto['preco']?></span>
                     </div>
                     <div class= "button">
