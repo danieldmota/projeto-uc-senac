@@ -171,17 +171,8 @@ $usuarios = [
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categorias</title>
-    <link rel="stylesheet" href="../assets/css/style.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../assets/css/components/table.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../assets/css/components/content.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../assets/css/components/footer.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../assets/css/components/sidebar.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
-</head>
+<?php require_once __DIR__ .'\..\components\head.php'; ?>
+
 <body>
     <?php require_once __DIR__ . '\..\components\navbar.php'; ?>
     

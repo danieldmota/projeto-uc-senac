@@ -2,8 +2,10 @@
 
 require_once './model/ProdutoModel.php';
 
-$ProdutoModel= new ProdutoModel();
+$ProdutoModel= new Produto();
 
-echo "<pre>"
-print_r($ProdutoModel ->buscar_id)
-echo "</pre>"
+$id= "1";
+
+echo "<pre>";
+print_r($ProdutoModel ->buscarPorId($id));
+echo "</pre>";

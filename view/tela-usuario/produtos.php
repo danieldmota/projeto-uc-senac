@@ -158,8 +158,17 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php require_once __DIR__ .'\..\components\head.php'; ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="../assets/css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/components/card.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/components/produtos.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/components/footer.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/components/sidebar.css?v=<?php echo time(); ?>">
 
+</head>
 <body>
     <?php require_once __DIR__ .'\..\components\navbar.php'; ?>
 
@@ -167,45 +176,22 @@
     
     <main>
         <h1>Produtos</h1>
-
-        <table class="table">
-            <thead>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Categoria</th>
-                <th>Preço</th>
-            </thead>
-            <tbody>
-                <?php foreach ($produtos as $produto) { ?>
-                    <tr>
-                        <td><?php echo $produto['id'] ?></td>
-                        <td><?php echo $produto['nome'] ?></td>
-                        <td><?php echo $produto['categoria'] ?></td>
-                        <td><?php echo "R$"; echo $produto['preco'] ?></td>
-                        <td>
-                            <!-- METHODS - Get / Post -->
-                            <form action="cadastro.php" method="GET">
-                                <input type="hidden" name="id" value="<?php echo $produto['id'] ?>">
-                                <button>
-                                    <span class="material-symbols-outlined">
-                                        edit
-                                    </span>
-                                </button>
-                            </form>
-
-                            <form action="excluir.php" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $produto['id'] ?>">
-                                <button onclick="return confirm('Tem certeza que deseja excluir o filme?')">
-                                <span class="material-symbols-outlined">
-                                    delete
-                                </span>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+        <div class="cards">
+            <?php foreach($produtos as $produto) {?>
+                <div class="card">
+                    <div class= "img">
+                        <img src="<?= $produto['imagem']?>" alt="">
+                    </div>
+                    <div class= "info">
+                        <h3><?= $produto['nome']?></h3>
+                        <span>R$<?= $produto['preco']?></span>
+                    </div>
+                    <div class= "button">
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
     </main>
 
     <?php require_once __DIR__ .'\..\components\footer.php'; ?>

@@ -176,5 +176,33 @@ class Produto{
         return $array_filtrado[$indexProduto];
     }
 
-}
+    public function inserir($nome, $descricao, $categoria, $preco, $imagem){
+        $query = "INSERT INTO $this->produtos (nome, descricao, categoria, preco, imagem)
+        VALUES (:nome, :ano, :descricao, :imagem)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":ano", $descricao);
+        $stmt->bindParam(":descricao", $categoria);
+        $stmt->bindParam(":descricao", $preco);
+        $stmt->bindParam(":imagem", $imagem);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+
+    }
+
+    public function editar($id, $nome, $descricao, $categoria, $preco, $imagem){
+        $query= "UPDATE $this->produtos SET nome= :nome, ano= :ano, descricao= :descricao, imagem= :imagem WHERE id= :id";
+        $stmt= $this->pdo->prepare($query);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":ano", $descricao);
+        $stmt->bindParam(":descricao", $categoria);
+        $stmt->bindParam(":descricao", $preco);
+        $stmt->bindParam(":imagem", $imagem);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    }
+};
 ?>
