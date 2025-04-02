@@ -27,7 +27,11 @@
 
     <main>
         <h1>Categorias</h1>
-
+        <div class="acao">
+            <a href="categorias-cadastrar.php">
+                <button><span>Novo</span><span class="material-symbols-outlined">add</span></button>
+            </a>
+        </div>
         <table class="table">
             <thead>
                 <th>ID</th>

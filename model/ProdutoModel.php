@@ -20,6 +20,15 @@ class ProdutoModel{
 
         return $stmt->fetchAll();
     }
+
+    public function excluirPorId($id){
+        $query= "DELETE FROM $this->tabela WHERE id= :id";
+        $stmt= $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+        return $stmt->rowCount();
+    }
 }
 //     public function buscarPorId($id){
 //         $indexProduto= -1;
