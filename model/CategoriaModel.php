@@ -39,7 +39,13 @@ class CategoriaModel{
         $query= "DELETE FROM $this->tabela WHERE id= :id";
         $stmt= $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
-        $stmt->execute();
+        $executado = $stmt->execute();
+
+        if ($executado) {
+            echo "Exclusão bem-sucedida!";
+        } else {
+            echo "Falha ao executar a exclusão.";
+        }
 
         return $stmt->rowCount();
     }
@@ -50,7 +56,9 @@ class CategoriaModel{
         $stmt->bindParam(":nome", $this->nome);
         $stmt->bindParam(":descricao", $this->descricao);
 
-        return $stmt->execute();
+        $res = $stmt->execute();
+
+        return $res ? true : false;
     }
     public function editar($categoria){
         $query = "UPDATE $this->tabela SET nome = :nome WHERE id = :id";

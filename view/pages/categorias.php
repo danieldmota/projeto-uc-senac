@@ -56,13 +56,9 @@
                                 </button>
                             </form>
 
-                            <form action="excluir.php" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $categoria['id'] ?>">
-                                <button onclick="return confirm('Tem certeza que deseja excluir o filme?')">
-                                <span class="material-symbols-outlined">
-                                    delete
-                                </span>
-                                </button>
+                            <form  action="categorias-excluir.php" method="POST">
+                                <input type="hidden"name="id" value="<?php echo $categoriaModel->id?>">
+                                <button name="excluir_categoria" onclick="return confirm('Tem certeza que deseja excluir?')"><span class="material-symbols-outlined">delete</span></button>
                             </form>
                         </td>
                     </tr>
