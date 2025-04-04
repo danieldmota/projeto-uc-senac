@@ -27,7 +27,6 @@ class CategoriaModel{
 
     public function buscarPorId($id){
         $query = "SELECT * FROM $this->tabela WHERE id= :id";
-
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
@@ -35,37 +34,33 @@ class CategoriaModel{
         return $stmt->fetch();
     }
 
-    public function excluirPorId($id){
-        $query= "DELETE FROM $this->tabela WHERE id= :id";
-        $stmt= $this->conn->prepare($query);
-        $stmt->bindParam(":id", $id);
-        $executado = $stmt->execute();
+    public function deletar( $id ){
+        $query = "DELETE FROM $this->tabela where id = :id";
+ 
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+ 
+        return $stmt->rowCount() >0;
+}
 
-        if ($executado) {
-            echo "Exclusão bem-sucedida!";
-        } else {
-            echo "Falha ao executar a exclusão.";
-        }
-
-        return $stmt->rowCount();
-    }
-
-    public function criar(){
+    public function criar($categoria){
         $query = "INSERT INTO $this->tabela (nome, descricao) VALUES (:nome, :descricao)";
         $stmt= $this->conn->prepare($query);
-        $stmt->bindParam(":nome", $this->nome);
-        $stmt->bindParam(":descricao", $this->descricao);
+        $stmt->bindParam(":nome", $categoria["nome"]);
+        $stmt->bindParam(":descricao", $categoria["descricao"]);
 
         $res = $stmt->execute();
 
         return $res ? true : false;
     }
     public function editar($categoria){
-        $query = "UPDATE $this->tabela SET nome = :nome WHERE id = :id";
-        $stmt= $this->conn->prepare($query);
+        $query = "UPDATE $this->tabela SET nome = :nome, descricao = :descricao WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $categoria["id"]);
         $stmt->bindParam(":nome", $categoria["nome"]);
-
+        $stmt->bindParam(":descricao", $categoria["descricao"]);
+        
         return $stmt->execute();
     }
 

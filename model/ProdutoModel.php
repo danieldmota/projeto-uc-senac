@@ -7,6 +7,11 @@ class ProdutoModel{
     private $conn;
     private $tabela= "produtos";
 
+    public $id;
+    public $nome;
+    public $descricao;
+    public $preco;
+
     public function __construct(){
         $db = new Database();
         $this->conn = $db->conectar();
@@ -21,59 +26,58 @@ class ProdutoModel{
         return $stmt->fetchAll();
     }
 
-    public function excluirPorId($id){
-        $query= "DELETE FROM $this->tabela WHERE id= :id";
-        $stmt= $this->conn->prepare($query);
+    public function buscarPorId($id){
+        $query = "SELECT * FROM $this->tabela WHERE id= :id";
+        $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
 
-        return $stmt->rowCount();
+        return $stmt->fetch();
     }
+
+
+    public function criar($produto){
+        $query = "INSERT INTO $this->tabela (nome, descricao, preco) VALUES (:nome, :descricao, :preco)";
+        $stmt= $this->conn->prepare($query);
+        $stmt->bindParam(":nome", $produto["nome"]);
+        $stmt->bindParam(":descricao", $produto["descricao"]);
+        $stmt->bindParam(":preco", $produto["preco"]);
+
+        $res = $stmt->execute();
+
+        return $res ? true : false;
+    }
+    public function editar($produto){
+        $query = "UPDATE $this->tabela SET nome = :nome, Descricao = :Descricao, Preco = :Preco WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $produto["id"]);
+        $stmt->bindParam(":nome", $produto["nome"]);
+        $stmt->bindParam(":Descricao", $produto["Descricao"]);
+        $stmt->bindParam(":Preco", $produto["Preco"]);
+        
+        return $stmt->execute();
+    }
+
+    public function deletar( $id ){
+        $query = "DELETE FROM $this->tabela where id = :id";
+ 
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+ 
+        return $stmt->rowCount() >0;
 }
-//     public function buscarPorId($id){
-//         $indexProduto= -1;
-
-//         $array_filtrado= array_filter(
-//             $this-> produtos,
-//             function ($produto, $index) use ($id, &$indexProduto){
-//                 if ($produto['id'] == $id){
-//                     $indexProduto= $index;
-//                     return $produto;
-//                 }
-//             },
-//             ARRAY_FILTER_USE_BOTH
-//         );
-
-//         return $array_filtrado[$indexProduto];
-//     }
-
-//     public function inserir($nome, $descricao, $categoria, $preco, $imagem){
-//         $query = "INSERT INTO $this->produtos (nome, descricao, categoria, preco, imagem)
-//         VALUES (:nome, :ano, :descricao, :imagem)";
-//         $stmt = $this->pdo->prepare($query);
-//         $stmt->bindParam(":nome", $nome);
-//         $stmt->bindParam(":ano", $descricao);
-//         $stmt->bindParam(":descricao", $categoria);
-//         $stmt->bindParam(":descricao", $preco);
-//         $stmt->bindParam(":imagem", $imagem);
-//         $stmt->execute();
-
-//         return $stmt->rowCount() > 0;
-
-//     }
-
-//     public function editar($id, $nome, $descricao, $categoria, $preco, $imagem){
-//         $query= "UPDATE $this->produtos SET nome= :nome, ano= :ano, descricao= :descricao, imagem= :imagem WHERE id= :id";
-//         $stmt= $this->pdo->prepare($query);
-//         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-//         $stmt->bindParam(":nome", $nome);
-//         $stmt->bindParam(":ano", $descricao);
-//         $stmt->bindParam(":descricao", $categoria);
-//         $stmt->bindParam(":descricao", $preco);
-//         $stmt->bindParam(":imagem", $imagem);
-//         $stmt->execute();
-
-//         return $stmt->rowCount() > 0;
-//     }
-// }
-?>
+    // public function buscarPorId($id){
+    //     $indexCategoria= -1;
+    //         $array_filtrado= array_filter(
+    //             $this-> produtos,
+    //             function ($produto, $index) use ($id, &$indexProduto){
+    //                 if ($produto['id'] == $id){
+    //                     $indexProduto= $index;
+    //                     return $produto;
+    //                 }
+    //             },
+    //             ARRAY_FILTER_USE_BOTH
+    //         );
+    // }
+}

@@ -1,20 +1,22 @@
 <?php
+ 
 require_once __DIR__ . '/../../model/CategoriaModel.php';
-
-if (isset($_POST['excluir_categoria'])){
-    $id = $_POST["id"];
-
-    if (!empty($id)){
+ 
+if ($_SERVER["REQUEST_METHOD"]== "POST"){
+    $id = $_POST['id'];
+ 
+    if(!empty($id)){
+ 
         $categoriaModel = new CategoriaModel();
-        $resultado = $categoriaModel->excluirPorId($id);
-
-        if ($resultado > 0) {
+        $sucesso = $categoriaModel->deletar($id);
+       
+        if($sucesso){
             return header("Location: categorias.php?mensagem=sucesso");
         } else {
-            return header("Location: categorias.php?mensagem=erro");
+        return header("Location: categorias.php?mensagem=erro");
         }
     }
 }
-
-return header("Location: categorias.php");
+ 
+    return header("Location: categorias.php");
 ?>

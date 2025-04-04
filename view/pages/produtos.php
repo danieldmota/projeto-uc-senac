@@ -17,7 +17,11 @@ $lista = $produtoModel-> listar();
     
     <main>
         <h1>Produtos</h1>
-
+        <div class="acao">
+            <a href="produtos-cadastrar.php">
+                <button><span>Novo</span><span class="material-symbols-outlined">add</span></button>
+            </a>
+        </div>
         <table class="table">
             <thead>
                 <th>ID</th>
@@ -30,11 +34,11 @@ $lista = $produtoModel-> listar();
                     <tr>
                         <td><?php echo $produto['id'] ?></td>
                         <td><?php echo $produto['nome'] ?></td>
-                        <td><?php echo $produto['descricao'] ?></td>
-                        <td><?php echo "R$"; echo $produto['preco'] ?></td>
+                        <td><?php echo $produto['Descricao'] ?></td>
+                        <td><?php echo "R$"; echo $produto['Preco'] ?></td>
                         <td>
                             <!-- METHODS - Get / Post -->
-                            <form action="cadastro.php" method="GET">
+                            <form action="produtos-editar.php" method="GET">
                                 <input type="hidden" name="id" value="<?php echo $produto['id'] ?>">
                                 <button>
                                     <span class="material-symbols-outlined">
@@ -43,7 +47,7 @@ $lista = $produtoModel-> listar();
                                 </button>
                             </form>
 
-                            <form action="excluir.php" method="POST">
+                            <form action="produtos-excluir.php" method="POST">
                                 <input type="hidden" name="id" value="<?php echo $produto['id'] ?>">
                                 <button onclick="return confirm('Tem certeza que deseja excluir o filme?')">
                                 <span class="material-symbols-outlined">

@@ -46,7 +46,7 @@
                         <td><?php echo $categoria['descricao'] ?></td>
                         <td>
                             <!-- METHODS - Get / Post -->
-                            <form action="cadastro.php" method="GET">
+                            <form action="categorias-editar.php" method="GET">
                                 <input type="hidden" name="id" value="<?php echo $categoria['id'] ?>">
                                 <a href=""></a>
                                 <button>
@@ -57,7 +57,7 @@
                             </form>
 
                             <form  action="categorias-excluir.php" method="POST">
-                                <input type="hidden"name="id" value="<?php echo $categoriaModel->id?>">
+                                <input type="hidden"name="id" value="<?php echo $categoria['id']?>">
                                 <button name="excluir_categoria" onclick="return confirm('Tem certeza que deseja excluir?')"><span class="material-symbols-outlined">delete</span></button>
                             </form>
                         </td>

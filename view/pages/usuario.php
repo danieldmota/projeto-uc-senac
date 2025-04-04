@@ -18,7 +18,11 @@ $lista = $usuarioModel->listar();
 
     <main>
         <h1>Usuários</h1>
-
+        <div class="acao">
+            <a href="usuario-cadastrar.php">
+                <button><span>Novo</span><span class="material-symbols-outlined">add</span></button>
+            </a>
+        </div>
         <table class="table">
             <thead>
                 <th>ID</th>
@@ -37,8 +41,8 @@ $lista = $usuarioModel->listar();
                         <td><?php echo $usuario['data_nascimento'] ?></td>
                         <td>
                             <!-- METHODS - Get / Post -->
-                            <form action="excluir.php" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $categoria['id'] ?>">
+                            <form action="usuario-excluir.php" method="POST">
+                                <input type="hidden" name="id" value="<?php echo $usuario['id'] ?>">
                                 <button onclick="return confirm('Tem certeza que deseja excluir o filme?')">
                                 <span class="material-symbols-outlined">
                                     delete

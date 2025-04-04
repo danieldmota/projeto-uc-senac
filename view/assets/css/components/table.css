@@ -32,3 +32,28 @@
         background-color: rgb(227, 227, 227);
     }
 }
+
+.acao{
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 800px;
+}
+
+.acao a{
+    text-decoration: none;
+}
+
+.acao button{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgb(15, 211, 15);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+}
